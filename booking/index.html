@@ -12,7 +12,7 @@
         :root {
             --ink: #000000;
             --paper: #FFFFFF;
-            --copper: #B87333;
+            --copper: #FF5A1F;
         }
 
         body {
@@ -63,7 +63,15 @@
 <body class="selection:bg-black selection:text-white">
 
     <nav class="px-8 py-10 flex justify-between items-baseline border-b border-black/5">
-        <a href="/website/" class="serif text-2xl font-medium kerning-tight italic">CustomRig</a>
+        <a href="/website/" class="flex items-center gap-3 group">
+            <svg viewBox="0 0 120 120" class="w-8 h-8 text-black" role="img">
+                <path d="M16 16 H104 V104 H16 Z M32 32 V88 H88 V32 Z" fill-rule="evenodd" fill="currentColor"/>
+                <rect x="36" y="35" width="48" height="12" fill="#FF5A1F"/>
+                <rect x="36" y="54" width="48" height="12" fill="currentColor"/>
+                <rect x="36" y="73" width="48" height="12" fill="currentColor"/>
+            </svg>
+            <div class="serif text-2xl font-medium text-black kerning-tight italic">CustomRig</div>
+        </a>
         <div class="mono text-[10px] uppercase kerning-loose opacity-40">Configurator v4.0.1</div>
     </nav>
 

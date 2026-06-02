@@ -12,7 +12,7 @@
         :root {
             --ink: #000000;
             --paper: #FFFFFF;
-            --copper: #B87333;
+            --copper: #FF5A1F;
             --silver: #E5E5E5;
         }
 
@@ -53,7 +53,15 @@
 
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 mix-blend-difference px-8 py-10 flex justify-between items-baseline">
-        <div class="serif text-2xl font-medium text-white kerning-tight italic">CustomRig</div>
+        <a href="/" class="flex items-center gap-3 group">
+            <svg viewBox="0 0 120 120" class="w-8 h-8 text-white" role="img">
+                <path d="M16 16 H104 V104 H16 Z M32 32 V88 H88 V32 Z" fill-rule="evenodd" fill="currentColor"/>
+                <rect x="36" y="35" width="48" height="12" fill="#FF5A1F"/>
+                <rect x="36" y="54" width="48" height="12" fill="currentColor"/>
+                <rect x="36" y="73" width="48" height="12" fill="currentColor"/>
+            </svg>
+            <div class="serif text-2xl font-medium text-white kerning-tight italic">CustomRig</div>
+        </a>
         <div class="space-x-12 text-[11px] uppercase kerning-loose font-medium text-white">
             <a href="#inventory" class="hover:opacity-50 transition-opacity">Inventory</a>
             <a href="#models" class="hover:opacity-50 transition-opacity">Models</a>
