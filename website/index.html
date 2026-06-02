@@ -10,10 +10,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --ink: #000000;
-            --paper: #FFFFFF;
-            --copper: #FF5A1F;
-            --silver: #E5E5E5;
+            --paper: #F4F1EA;       /* Warm alabaster */
+            --ink: #101113;         /* Deep rich charcoal */
+            --racing-green: #0C1F16; 
+            --bronze-dark: #2B231D;
+            --navy-dark: #0D161E;
+            --copper: #FF5A1F;      /* Official logo accent */
         }
 
         body {
@@ -41,28 +43,27 @@
 
         /* Layout Utilities */
         .vast-whitespace { padding-top: 15vh; padding-bottom: 15vh; }
-        .grid-bleed { border-top: 1px solid var(--ink); }
-
-        /* Custom Scrollbar for the Minimalist */
+        
+        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: var(--paper); }
         ::-webkit-scrollbar-thumb { background: var(--ink); }
     </style>
 </head>
-<body class="selection:bg-black selection:text-white">
+<body class="selection:bg-[var(--copper)] selection:text-[var(--paper)]">
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 mix-blend-difference px-8 py-10 flex justify-between items-baseline">
+    <nav class="absolute top-0 w-full z-50 px-8 py-10 flex justify-between items-baseline text-[var(--paper)]">
         <a href="/" class="flex items-center gap-3 group">
-            <svg viewBox="0 0 120 120" class="w-8 h-8 text-white" role="img">
+            <svg viewBox="0 0 120 120" class="w-8 h-8 text-[var(--paper)]" role="img">
                 <path d="M16 16 H104 V104 H16 Z M32 32 V88 H88 V32 Z" fill-rule="evenodd" fill="currentColor"/>
-                <rect x="36" y="35" width="48" height="12" fill="#FF5A1F"/>
+                <rect x="36" y="35" width="48" height="12" fill="var(--copper)"/>
                 <rect x="36" y="54" width="48" height="12" fill="currentColor"/>
                 <rect x="36" y="73" width="48" height="12" fill="currentColor"/>
             </svg>
-            <div class="serif text-2xl font-medium text-white kerning-tight italic">CustomRig</div>
+            <div class="serif text-2xl font-medium kerning-tight italic">CustomRig</div>
         </a>
-        <div class="space-x-12 text-[11px] uppercase kerning-loose font-medium text-white">
+        <div class="space-x-12 text-[11px] uppercase kerning-loose font-medium">
             <a href="#inventory" class="hover:opacity-50 transition-opacity">Inventory</a>
             <a href="#models" class="hover:opacity-50 transition-opacity">Models</a>
             <a href="/booking" class="hover:opacity-50 transition-opacity">Configure</a>
@@ -71,17 +72,20 @@
 
     <!-- 1. Hero Section -->
     <main>
-        <section class="min-h-screen flex flex-col justify-center px-8 lg:px-24">
-            <div class="max-w-6xl">
+        <section class="min-h-screen flex flex-col justify-center px-8 lg:px-24 bg-[var(--racing-green)] text-[var(--paper)] relative overflow-hidden">
+            <!-- Subtle architectural line -->
+            <div class="absolute left-8 lg:left-24 top-0 bottom-0 w-[1px] bg-[var(--paper)] opacity-10"></div>
+            
+            <div class="max-w-6xl relative z-10">
                 <h1 class="serif text-[12vw] lg:text-[10rem] font-medium mb-12">
                     Rent the metal.
                 </h1>
                 <div class="grid grid-cols-12 gap-8 items-start">
-                    <p class="col-span-12 lg:col-span-5 text-2xl leading-relaxed kerning-tight">
+                    <p class="col-span-12 lg:col-span-5 text-2xl leading-relaxed kerning-tight text-[var(--paper)] opacity-90">
                         Skip the cloud bill. Direct access to bare-metal GPU clusters. No virtualization, no overhead, no compromises.
                     </p>
                     <div class="col-span-12 lg:col-start-8 lg:col-span-5 pt-4">
-                        <a href="/booking" class="inline-block bg-black text-white px-12 py-5 text-sm uppercase kerning-loose font-semibold sharp-edge hover:bg-zinc-800 transition-colors">
+                        <a href="/booking" class="inline-block bg-[var(--paper)] text-[var(--racing-green)] px-12 py-5 text-sm uppercase kerning-loose font-semibold sharp-edge hover:opacity-90 transition-opacity">
                             Configure Your Rig
                         </a>
                     </div>
@@ -90,132 +94,133 @@
         </section>
 
         <!-- 2. Parts Catalog (Inventory) -->
-        <section id="inventory" class="vast-whitespace px-8 lg:px-24 grid-bleed">
+        <section id="inventory" class="vast-whitespace px-8 lg:px-24 border-t border-[var(--ink)]/10">
             <div class="flex justify-between items-end mb-24">
                 <h2 class="serif text-6xl font-medium italic">Available Inventory</h2>
-                <span class="mono text-xs uppercase kerning-loose opacity-40">Live Status — 2026.06.01</span>
+                <span class="mono text-[10px] uppercase kerning-loose opacity-40">Live Status — 2026.06.01</span>
             </div>
 
-            <div class="space-y-0 border-t border-black/10">
-                <!-- AI Starter Tier -->
-                <div class="grid grid-cols-12 gap-8 py-12 border-b border-black/10 hover:bg-zinc-50 transition-colors group">
-                    <div class="col-span-12 lg:col-span-4">
+            <div class="space-y-0 border-t border-[var(--ink)]/10">
+                
+                <!-- AI Starter Tier (Anodized Bronze Hover) -->
+                <div class="grid grid-cols-12 gap-8 py-12 border-b border-[var(--ink)]/10 hover:bg-[var(--bronze-dark)] hover:text-[var(--paper)] transition-all duration-500 group cursor-default">
+                    <div class="col-span-12 lg:col-span-4 pl-6 border-l border-transparent group-hover:border-[var(--copper)] transition-colors">
                         <h3 class="serif text-3xl mb-2 italic">AI Starter</h3>
-                        <p class="text-sm opacity-60">Ideal for rapid prototyping and fine-tuning.</p>
+                        <p class="text-sm opacity-60 group-hover:opacity-80 transition-opacity">Ideal for rapid prototyping and fine-tuning.</p>
                     </div>
                     <div class="col-span-12 lg:col-span-4 mono text-sm flex flex-col justify-center">
-                        <div class="flex justify-between py-1 border-b border-black/5">
-                            <span>GPU</span>
+                        <div class="flex justify-between py-1 border-b border-[var(--ink)]/10 group-hover:border-[var(--paper)]/10 transition-colors">
+                            <span class="opacity-50 group-hover:opacity-70">GPU</span>
                             <span class="font-medium text-[var(--copper)]">RTX 5090</span>
                         </div>
-                        <div class="flex justify-between py-1 border-b border-black/5">
-                            <span>VRAM</span>
+                        <div class="flex justify-between py-1 border-b border-[var(--ink)]/10 group-hover:border-[var(--paper)]/10 transition-colors">
+                            <span class="opacity-50 group-hover:opacity-70">VRAM</span>
                             <span>32GB GDDR7</span>
                         </div>
                         <div class="flex justify-between py-1">
-                            <span>BANDWIDTH</span>
+                            <span class="opacity-50 group-hover:opacity-70">BANDWIDTH</span>
                             <span>32 GT/s PCIe 5.0</span>
                         </div>
                     </div>
-                    <div class="col-span-12 lg:col-span-4 flex items-center justify-end">
-                        <span class="serif text-4xl mr-8">$2.50<span class="text-lg italic">/hr</span></span>
-                        <a href="/booking" class="opacity-0 group-hover:opacity-100 transition-opacity text-xs uppercase underline underline-offset-4 font-semibold">Reserve</a>
+                    <div class="col-span-12 lg:col-span-4 flex items-center justify-end pr-6">
+                        <span class="serif text-4xl mr-8">$2.50<span class="text-lg italic opacity-50">/hr</span></span>
+                        <a href="/booking" class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 text-xs uppercase underline underline-offset-4 font-semibold text-[var(--copper)]">Reserve</a>
                     </div>
                 </div>
 
-                <!-- Studio Tier -->
-                <div class="grid grid-cols-12 gap-8 py-12 border-b border-black/10 hover:bg-zinc-50 transition-colors group">
-                    <div class="col-span-12 lg:col-span-4">
+                <!-- Studio Tier (Metallic Navy Hover) -->
+                <div class="grid grid-cols-12 gap-8 py-12 border-b border-[var(--ink)]/10 hover:bg-[var(--navy-dark)] hover:text-[var(--paper)] transition-all duration-500 group cursor-default">
+                    <div class="col-span-12 lg:col-span-4 pl-6 border-l border-transparent group-hover:border-[var(--copper)] transition-colors">
                         <h3 class="serif text-3xl mb-2 italic">Studio</h3>
-                        <p class="text-sm opacity-60">The professional standard for rendering and inference.</p>
+                        <p class="text-sm opacity-60 group-hover:opacity-80 transition-opacity">The professional standard for rendering and inference.</p>
                     </div>
                     <div class="col-span-12 lg:col-span-4 mono text-sm flex flex-col justify-center">
-                        <div class="flex justify-between py-1 border-b border-black/5">
-                            <span>GPU</span>
+                        <div class="flex justify-between py-1 border-b border-[var(--ink)]/10 group-hover:border-[var(--paper)]/10 transition-colors">
+                            <span class="opacity-50 group-hover:opacity-70">GPU</span>
                             <span class="font-medium text-[var(--copper)]">RTX 6000 Ada</span>
                         </div>
-                        <div class="flex justify-between py-1 border-b border-black/5">
-                            <span>VRAM</span>
+                        <div class="flex justify-between py-1 border-b border-[var(--ink)]/10 group-hover:border-[var(--paper)]/10 transition-colors">
+                            <span class="opacity-50 group-hover:opacity-70">VRAM</span>
                             <span>48GB GDDR6</span>
                         </div>
                         <div class="flex justify-between py-1">
-                            <span>ECC</span>
+                            <span class="opacity-50 group-hover:opacity-70">ECC</span>
                             <span>Enabled</span>
                         </div>
                     </div>
-                    <div class="col-span-12 lg:col-span-4 flex items-center justify-end">
-                        <span class="serif text-4xl mr-8">$4.80<span class="text-lg italic">/hr</span></span>
-                        <a href="/booking" class="opacity-0 group-hover:opacity-100 transition-opacity text-xs uppercase underline underline-offset-4 font-semibold">Reserve</a>
+                    <div class="col-span-12 lg:col-span-4 flex items-center justify-end pr-6">
+                        <span class="serif text-4xl mr-8">$4.80<span class="text-lg italic opacity-50">/hr</span></span>
+                        <a href="/booking" class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 text-xs uppercase underline underline-offset-4 font-semibold text-[var(--copper)]">Reserve</a>
                     </div>
                 </div>
 
-                <!-- CRS Enterprise Tier -->
-                <div class="grid grid-cols-12 gap-8 py-12 border-b border-black/10 hover:bg-zinc-50 transition-colors group">
-                    <div class="col-span-12 lg:col-span-4">
+                <!-- CRS Enterprise Tier (Racing Green Hover) -->
+                <div class="grid grid-cols-12 gap-8 py-12 border-b border-[var(--ink)]/10 hover:bg-[var(--racing-green)] hover:text-[var(--paper)] transition-all duration-500 group cursor-default">
+                    <div class="col-span-12 lg:col-span-4 pl-6 border-l border-transparent group-hover:border-[var(--copper)] transition-colors">
                         <h3 class="serif text-3xl mb-2 italic">Enterprise</h3>
-                        <p class="text-sm opacity-60">H100 clusters for large-scale LLM training.</p>
+                        <p class="text-sm opacity-60 group-hover:opacity-80 transition-opacity">H100 clusters for large-scale LLM training.</p>
                     </div>
                     <div class="col-span-12 lg:col-span-4 mono text-sm flex flex-col justify-center">
-                        <div class="flex justify-between py-1 border-b border-black/5">
-                            <span>NODE</span>
+                        <div class="flex justify-between py-1 border-b border-[var(--ink)]/10 group-hover:border-[var(--paper)]/10 transition-colors">
+                            <span class="opacity-50 group-hover:opacity-70">NODE</span>
                             <span class="font-medium text-[var(--copper)]">H100 NVL</span>
                         </div>
-                        <div class="flex justify-between py-1 border-b border-black/5">
-                            <span>VRAM</span>
+                        <div class="flex justify-between py-1 border-b border-[var(--ink)]/10 group-hover:border-[var(--paper)]/10 transition-colors">
+                            <span class="opacity-50 group-hover:opacity-70">VRAM</span>
                             <span>188GB (Stacked)</span>
                         </div>
                         <div class="flex justify-between py-1">
-                            <span>INTERCONNECT</span>
+                            <span class="opacity-50 group-hover:opacity-70">INTERCONNECT</span>
                             <span>400Gb/s NDR InfiniBand</span>
                         </div>
                     </div>
-                    <div class="col-span-12 lg:col-span-4 flex items-center justify-end">
-                        <span class="serif text-4xl mr-8">$12.50<span class="text-lg italic">/hr</span></span>
-                        <a href="/booking" class="opacity-0 group-hover:opacity-100 transition-opacity text-xs uppercase underline underline-offset-4 font-semibold">Reserve</a>
+                    <div class="col-span-12 lg:col-span-4 flex items-center justify-end pr-6">
+                        <span class="serif text-4xl mr-8">$12.50<span class="text-lg italic opacity-50">/hr</span></span>
+                        <a href="/booking" class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 text-xs uppercase underline underline-offset-4 font-semibold text-[var(--copper)]">Reserve</a>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- 3. Delivery Models -->
-        <section id="models" class="vast-whitespace px-8 lg:px-24 bg-black text-white">
+        <section id="models" class="vast-whitespace px-8 lg:px-24 bg-[var(--navy-dark)] text-[var(--paper)] border-t border-[var(--paper)]/10">
             <h2 class="serif text-6xl font-medium mb-32 italic">Delivery Models</h2>
             
             <div class="grid grid-cols-12 gap-12">
-                <div class="col-span-12 lg:col-span-4 border-l border-white/20 pl-8 pb-12">
-                    <span class="mono text-[10px] uppercase kerning-loose opacity-50 mb-8 block">01 / On-Premise</span>
+                <div class="col-span-12 lg:col-span-4 border-l border-[var(--paper)]/20 pl-8 pb-12">
+                    <span class="mono text-[10px] uppercase kerning-loose opacity-40 mb-8 block text-[var(--copper)]">01 / On-Premise</span>
                     <h4 class="serif text-4xl mb-6">Take it home.</h4>
                     <p class="text-sm leading-relaxed opacity-70 mb-12">
-                        Physical delivery of configured rigs to your office or data center. The ultimate in data sovereignty.
+                        Physical delivery of configured rigs to your office or data center. The ultimate in data sovereignty and local control.
                     </p>
-                    <div class="text-[10px] uppercase kerning-loose font-bold tracking-widest text-[var(--copper)]">Daily & Weekly</div>
+                    <div class="text-[10px] uppercase kerning-loose font-bold tracking-widest opacity-40">Daily & Weekly</div>
                 </div>
 
-                <div class="col-span-12 lg:col-span-4 border-l border-white/20 pl-8 pb-12">
-                    <span class="mono text-[10px] uppercase kerning-loose opacity-50 mb-8 block">02 / Remote Access</span>
+                <div class="col-span-12 lg:col-span-4 border-l border-[var(--paper)]/20 pl-8 pb-12">
+                    <span class="mono text-[10px] uppercase kerning-loose opacity-40 mb-8 block text-[var(--copper)]">02 / Remote Access</span>
                     <h4 class="serif text-4xl mb-6">Hosted.</h4>
                     <p class="text-sm leading-relaxed opacity-70 mb-12">
-                        Instant access via SSH or VS Code. Zero latency, high-bandwidth backbone connectivity.
+                        Instant access via SSH or VS Code. Zero latency, high-bandwidth backbone connectivity to our proprietary architecture.
                     </p>
-                    <div class="text-[10px] uppercase kerning-loose font-bold tracking-widest text-[var(--copper)]">Hourly Billing</div>
+                    <div class="text-[10px] uppercase kerning-loose font-bold tracking-widest opacity-40">Hourly Billing</div>
                 </div>
 
-                <div class="col-span-12 lg:col-span-4 border-l border-white/20 pl-8 pb-12">
-                    <span class="mono text-[10px] uppercase kerning-loose opacity-50 mb-8 block">03 / Capital Asset</span>
+                <div class="col-span-12 lg:col-span-4 border-l border-[var(--paper)]/20 pl-8 pb-12">
+                    <span class="mono text-[10px] uppercase kerning-loose opacity-40 mb-8 block text-[var(--copper)]">03 / Capital Asset</span>
                     <h4 class="serif text-4xl mb-6">Buy & Host.</h4>
                     <p class="text-sm leading-relaxed opacity-70 mb-12">
-                        Purchase the hardware and we manage the cooling, power, and DCOPS. The lowest TCO for 24/7 loads.
+                        Purchase the hardware outright. We manage the cooling, power, and DCOPS. The lowest TCO for persistent 24/7 loads.
                     </p>
-                    <div class="text-[10px] uppercase kerning-loose font-bold tracking-widest text-[var(--copper)]">Annual Contracts</div>
+                    <div class="text-[10px] uppercase kerning-loose font-bold tracking-widest opacity-40">Annual Contracts</div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="px-8 py-24 border-t border-black/10 flex justify-between items-center">
+    <footer class="px-8 py-24 bg-[var(--ink)] text-[var(--paper)] flex justify-between items-center">
         <div class="serif text-xl italic opacity-50">CustomRig</div>
         <div class="mono text-[10px] uppercase kerning-loose opacity-40">
-            &copy; 2026 CustomRig Infrastructure Group. No virtualization used.
+            &copy; 2026 CustomRig Infrastructure Group. Uncompromised Metal.
         </div>
     </footer>
 

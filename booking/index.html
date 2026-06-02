@@ -10,8 +10,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --ink: #000000;
-            --paper: #FFFFFF;
+            --paper: #F4F1EA;       /* Warm alabaster */
+            --ink: #101113;         /* Deep rich charcoal */
+            --racing-green: #0C1F16; 
+            --bronze-dark: #2B231D;
+            --navy-dark: #0D161E;
             --copper: #FF5A1F;
         }
 
@@ -36,41 +39,64 @@
             font-family: 'Newsreader', serif;
             font-style: italic;
             width: 100%;
+            color: var(--ink);
         }
 
         input:focus {
             outline: none;
             border-bottom-width: 2px;
+            border-color: var(--copper);
         }
 
         .option-card {
-            border: 1px solid rgba(0,0,0,0.1);
-            transition: all 0.2s ease;
+            border: 1px solid rgba(16, 17, 19, 0.15);
+            transition: all 0.3s ease;
             cursor: pointer;
+            background: transparent;
         }
 
         .option-card:hover {
             border-color: var(--ink);
         }
 
-        .option-card.selected {
+        /* Specific thematic selections mirroring the main page */
+        .option-card.selected-bronze {
+            border-color: var(--bronze-dark);
+            background: var(--bronze-dark);
+            color: var(--paper);
+        }
+        
+        .option-card.selected-green {
+            border-color: var(--racing-green);
+            background: var(--racing-green);
+            color: var(--paper);
+        }
+
+        .option-card.selected-navy {
+            border-color: var(--navy-dark);
+            background: var(--navy-dark);
+            color: var(--paper);
+        }
+
+        .option-card.selected-ink {
             border-color: var(--ink);
             background: var(--ink);
             color: var(--paper);
         }
+
     </style>
 </head>
-<body class="selection:bg-black selection:text-white">
+<body class="selection:bg-[var(--copper)] selection:text-[var(--paper)]">
 
-    <nav class="px-8 py-10 flex justify-between items-baseline border-b border-black/5">
+    <nav class="px-8 py-10 flex justify-between items-baseline border-b border-[var(--ink)]/10">
         <a href="/website/" class="flex items-center gap-3 group">
-            <svg viewBox="0 0 120 120" class="w-8 h-8 text-black" role="img">
+            <svg viewBox="0 0 120 120" class="w-8 h-8 text-[var(--ink)]" role="img">
                 <path d="M16 16 H104 V104 H16 Z M32 32 V88 H88 V32 Z" fill-rule="evenodd" fill="currentColor"/>
-                <rect x="36" y="35" width="48" height="12" fill="#FF5A1F"/>
+                <rect x="36" y="35" width="48" height="12" fill="var(--copper)"/>
                 <rect x="36" y="54" width="48" height="12" fill="currentColor"/>
                 <rect x="36" y="73" width="48" height="12" fill="currentColor"/>
             </svg>
-            <div class="serif text-2xl font-medium text-black kerning-tight italic">CustomRig</div>
+            <div class="serif text-2xl font-medium kerning-tight italic text-[var(--ink)]">CustomRig</div>
         </a>
         <div class="mono text-[10px] uppercase kerning-loose opacity-40">Configurator v4.0.1</div>
     </nav>
@@ -82,23 +108,24 @@
             
             <!-- 01 Hardware -->
             <section>
-                <span class="mono text-[10px] uppercase kerning-loose opacity-40 mb-4 block">Section 01</span>
+                <span class="mono text-[10px] uppercase kerning-loose opacity-40 mb-4 block text-[var(--copper)]">Section 01</span>
                 <h2 class="serif text-5xl mb-12">Select Compute Core</h2>
                 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                    <div class="option-card selected p-8 sharp-edge">
+                    <div class="option-card selected-bronze p-8 sharp-edge relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-[var(--copper)]"></div>
                         <div class="flex justify-between items-start mb-12">
                             <h3 class="serif text-2xl italic">RTX 5090</h3>
-                            <span class="mono text-xs">Primary</span>
+                            <span class="mono text-[10px] uppercase opacity-70">Starter</span>
                         </div>
-                        <p class="text-xs opacity-60 mb-8 leading-relaxed">32GB GDDR7. Ideal for local development and rapid iteration cycles.</p>
+                        <p class="text-xs opacity-70 mb-8 leading-relaxed">32GB GDDR7. Ideal for local development and rapid iteration cycles.</p>
                         <div class="mono text-sm font-medium">$2.50 / hr</div>
                     </div>
 
-                    <div class="option-card p-8 sharp-edge">
+                    <div class="option-card p-8 sharp-edge relative">
                         <div class="flex justify-between items-start mb-12">
                             <h3 class="serif text-2xl italic">H100 NVL</h3>
-                            <span class="mono text-xs">Enterprise</span>
+                            <span class="mono text-[10px] uppercase opacity-40">Enterprise</span>
                         </div>
                         <p class="text-xs opacity-60 mb-8 leading-relaxed">188GB Stacked VRAM. Purpose-built for LLM training and scale.</p>
                         <div class="mono text-sm font-medium">$12.50 / hr</div>
@@ -108,7 +135,7 @@
 
             <!-- 02 Network -->
             <section>
-                <span class="mono text-[10px] uppercase kerning-loose opacity-40 mb-4 block">Section 02</span>
+                <span class="mono text-[10px] uppercase kerning-loose opacity-40 mb-4 block text-[var(--copper)]">Section 02</span>
                 <h2 class="serif text-5xl mb-12">Connectivity Interface</h2>
                 
                 <div class="space-y-4">
@@ -117,42 +144,42 @@
                             <h3 class="serif text-xl italic">Public Backbone</h3>
                             <p class="text-[10px] opacity-50 mt-1">10Gbps symmetric with dedicated IP.</p>
                         </div>
-                        <div class="mono text-xs font-bold">Included</div>
+                        <div class="mono text-xs font-bold opacity-50">Included</div>
                     </div>
-                    <div class="option-card p-6 flex justify-between items-center sharp-edge border-black bg-black text-white">
+                    <div class="option-card selected-navy p-6 flex justify-between items-center sharp-edge">
                         <div>
                             <h3 class="serif text-xl italic">CRS Private Link</h3>
-                            <p class="text-[10px] opacity-50 mt-1">Low-latency tunneling for on-prem integration.</p>
+                            <p class="text-[10px] opacity-70 mt-1">Low-latency tunneling for on-prem integration.</p>
                         </div>
-                        <div class="mono text-xs font-bold">+$0.50 / hr</div>
+                        <div class="mono text-xs font-bold text-[var(--copper)]">+$0.50 / hr</div>
                     </div>
                 </div>
             </section>
 
             <!-- 03 Delivery -->
             <section>
-                <span class="mono text-[10px] uppercase kerning-loose opacity-40 mb-4 block">Section 03</span>
+                <span class="mono text-[10px] uppercase kerning-loose opacity-40 mb-4 block text-[var(--copper)]">Section 03</span>
                 <h2 class="serif text-5xl mb-12">Logistics</h2>
                 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-                    <div class="option-card selected p-6 sharp-edge text-center">
+                    <div class="option-card selected-ink p-6 sharp-edge text-center">
                         <h4 class="serif text-lg italic mb-2">Hosted</h4>
-                        <span class="mono text-[10px] opacity-50">Instant</span>
+                        <span class="mono text-[10px] opacity-70">Instant</span>
                     </div>
                     <div class="option-card p-6 sharp-edge text-center">
                         <h4 class="serif text-lg italic mb-2">Shipped</h4>
-                        <span class="mono text-[10px] opacity-50">24-48 Hours</span>
+                        <span class="mono text-[10px] opacity-40">24-48 Hours</span>
                     </div>
                     <div class="option-card p-6 sharp-edge text-center">
                         <h4 class="serif text-lg italic mb-2">Colocated</h4>
-                        <span class="mono text-[10px] opacity-50">Custom</span>
+                        <span class="mono text-[10px] opacity-40">Custom</span>
                     </div>
                 </div>
             </section>
 
             <!-- 04 Identity -->
             <section class="pb-32">
-                <span class="mono text-[10px] uppercase kerning-loose opacity-40 mb-4 block">Section 04</span>
+                <span class="mono text-[10px] uppercase kerning-loose opacity-40 mb-4 block text-[var(--copper)]">Section 04</span>
                 <h2 class="serif text-5xl mb-12">Identification</h2>
                 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -170,11 +197,11 @@
         </div>
 
         <!-- Sidebar Summary -->
-        <div class="col-span-12 lg:col-span-4 bg-zinc-50 border-l border-black/5 p-8 lg:p-12 relative">
+        <div class="col-span-12 lg:col-span-4 border-l border-[var(--ink)]/10 p-8 lg:p-12 relative bg-[#F0EBE0]">
             <div class="sticky top-12">
                 <h2 class="serif text-2xl mb-8 italic">Technical Manifest</h2>
                 
-                <div class="space-y-6 mb-12 border-t border-black/10 pt-6">
+                <div class="space-y-6 mb-12 border-t border-[var(--ink)]/10 pt-6">
                     <div class="flex justify-between items-baseline">
                         <span class="mono text-[10px] uppercase opacity-40">Core</span>
                         <span class="serif text-lg">RTX 5090 (x1)</span>
@@ -193,14 +220,14 @@
                     </div>
                 </div>
 
-                <div class="border-t-2 border-black pt-6 mb-12">
+                <div class="border-t border-[var(--ink)] pt-6 mb-12">
                     <div class="flex justify-between items-baseline">
-                        <span class="mono text-[10px] uppercase font-bold">Total Estimated Rate</span>
+                        <span class="mono text-[10px] uppercase font-bold text-[var(--copper)]">Total Estimated Rate</span>
                         <span class="serif text-4xl font-medium">$3.00<span class="text-sm italic opacity-50">/hr</span></span>
                     </div>
                 </div>
 
-                <button class="w-full bg-black text-white py-6 text-sm uppercase kerning-loose font-bold sharp-edge hover:bg-zinc-800 transition-colors">
+                <button class="w-full bg-[var(--racing-green)] text-[var(--paper)] py-6 text-sm uppercase kerning-loose font-bold sharp-edge hover:bg-[var(--ink)] transition-colors">
                     Initialize Deployment
                 </button>
                 
