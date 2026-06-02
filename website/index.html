@@ -107,36 +107,54 @@
             </div>
         );
 
-        const Login = ({ onLogin }) => (
-            <div className="view-enter view-enter-active min-h-screen flex items-center justify-center px-8 pt-24">
-                <div className="max-w-md w-full space-y-24">
-                    <div className="text-center">
-                        <h2 className="serif text-5xl italic mb-4">Operator Entry</h2>
-                        <p className="mono text-[10px] uppercase opacity-40 kerning-loose">Initialize Secure Session</p>
+        const Login = ({ onLogin }) => {
+            const [mode, setMode] = useState('login'); // 'login' or 'register'
+
+            return (
+                <div className="view-enter view-enter-active min-h-screen flex items-center justify-center px-8 pt-24">
+                    <div className="max-w-md w-full space-y-24">
+                        <div className="text-center">
+                            <h2 className="serif text-5xl italic mb-4">
+                                {mode === 'login' ? 'Customer Login' : 'Create Account'}
+                            </h2>
+                            <p className="mono text-[10px] uppercase opacity-40 kerning-loose">
+                                {mode === 'login' ? 'Initialize Secure Session' : 'Register Operator Identity'}
+                            </p>
+                        </div>
+                        <form className="space-y-12" onSubmit={(e) => { e.preventDefault(); onLogin(); }}>
+                            <div className="space-y-8">
+                                {mode === 'register' && (
+                                    <div className="view-enter view-enter-active relative">
+                                        <label className="serif text-xs italic opacity-40 block mb-2">Full Name</label>
+                                        <input type="text" placeholder="Jony Ive" className="w-full bg-transparent border-b border-[#101113]/20 py-2 serif italic text-xl focus:border-[#FF5A1F] transition-colors placeholder:opacity-10" required />
+                                    </div>
+                                )}
+                                <div className="relative">
+                                    <label className="serif text-xs italic opacity-40 block mb-2">Identifier</label>
+                                    <input type="email" placeholder="email@address.com" className="w-full bg-transparent border-b border-[#101113]/20 py-2 serif italic text-xl focus:border-[#FF5A1F] transition-colors placeholder:opacity-10" required />
+                                </div>
+                                <div className="relative">
+                                    <label className="serif text-xs italic opacity-40 block mb-2">Access Key</label>
+                                    <input type="password" placeholder="••••••••" className="w-full bg-transparent border-b border-[#101113]/20 py-2 serif italic text-xl focus:border-[#FF5A1F] transition-colors placeholder:opacity-10" required />
+                                </div>
+                            </div>
+                            <div className="flex flex-col gap-6">
+                                <button className="bg-[#101113] text-[#F4F1EA] py-6 text-[11px] uppercase kerning-loose font-bold sharp-edge hover:bg-[#0C1F16] transition-colors">
+                                    {mode === 'login' ? 'Initialize' : 'Create Identity'}
+                                </button>
+                                <button 
+                                    type="button" 
+                                    onClick={() => setMode(mode === 'login' ? 'register' : 'login')}
+                                    className="text-[10px] uppercase kerning-loose opacity-40 hover:opacity-100 transition-opacity"
+                                >
+                                    {mode === 'login' ? 'Create Account' : 'Return to Sign In'}
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                    <form className="space-y-12" onSubmit={(e) => { e.preventDefault(); onLogin(); }}>
-                        <div className="space-y-8">
-                            <div className="relative">
-                                <label className="serif text-xs italic opacity-40 block mb-2">Identifier</label>
-                                <input type="email" placeholder="email@address.com" className="w-full bg-transparent border-b border-[#101113]/20 py-2 serif italic text-xl focus:border-[#FF5A1F] transition-colors placeholder:opacity-10" required />
-                            </div>
-                            <div className="relative">
-                                <label className="serif text-xs italic opacity-40 block mb-2">Access Key</label>
-                                <input type="password" placeholder="••••••••" className="w-full bg-transparent border-b border-[#101113]/20 py-2 serif italic text-xl focus:border-[#FF5A1F] transition-colors placeholder:opacity-10" required />
-                            </div>
-                        </div>
-                        <div className="flex flex-col gap-6">
-                            <button className="bg-[#101113] text-[#F4F1EA] py-6 text-[11px] uppercase kerning-loose font-bold sharp-edge hover:bg-[#0C1F16] transition-colors">
-                                Initialize
-                            </button>
-                            <button type="button" className="text-[10px] uppercase kerning-loose opacity-40 hover:opacity-100 transition-opacity">
-                                Create Account
-                            </button>
-                        </div>
-                    </form>
                 </div>
-            </div>
-        );
+            );
+        };
 
         const Dashboard = () => {
             const inventory = [
